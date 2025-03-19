@@ -54,7 +54,7 @@ jobs:
           push: true
           context: .
           platforms: linux/amd64,linux/arm64
-          file: docker/server/Dockerfile
+          file: docker/server/Dockerfile.env
           build-args: |
             YARN_OPTS=${{ env.YARN_OPTS }}
           tags: |
