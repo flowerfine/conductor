@@ -8,6 +8,7 @@ on:
 
 env:
   HUB: ghcr.io/flowerfine/conductor
+  YARN_OPTS: --network-timeout 10000000
 
 jobs:
   release:
@@ -54,5 +55,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           file: docker/server/Dockerfile
+          build-args: |
+            YARN_OPTS=${{ env.YARN_OPTS }}
           tags: |
             ${{ env.HUB }}/server:${{ github.ref_name }}
